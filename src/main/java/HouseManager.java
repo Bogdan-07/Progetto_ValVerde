@@ -1,43 +1,68 @@
 import java.util.Hashtable;
 
-public class HouseManager{
-    private final Hashtable<String,Room> roomManager;
-    private final Hashtable<String,Pool> poolManager;
+public class HouseManager {
+    private final Hashtable<String, Room> roomManager;
+    private final Hashtable<String, Pool> poolManager;
 
-    //Constructor
-
-    public HouseManager(){
+    // Constructor
+    public HouseManager() {
         roomManager = new Hashtable<>();
         poolManager = new Hashtable<>();
     }
 
-    //Rooms methods
-
-    public void addRoom(Room inputRoom){
+    // Rooms methods
+    public void addRoom(Room inputRoom) {
         roomManager.put(inputRoom.getRoomName(), inputRoom);
-    }
-    public Room getRoom(String key){
-        return roomManager.get(key);
-    }
-    public void removeRoom(String key){
-        roomManager.remove(key);
+        Logger.writeLog("Added room: " + inputRoom.getRoomName() + "\n");
     }
 
-    //Pools methods
+    public Room getRoom(String key) {
+        if (roomManager.isEmpty() || !roomManager.containsKey(key))
+            return null;
+        else
+            return roomManager.get(key);
+    }
 
-    public void addPool(Pool inputPool){
+    public int removeRoom(String key) {
+        if (roomManager.isEmpty()) {
+            return -1;
+        } else {
+            roomManager.remove(key);
+            Logger.writeLog("Removed room: " + key + "\n");
+            return 0;
+        }
+    }
+
+    // Pools methods
+    public void addPool(Pool inputPool) {
         poolManager.put(inputPool.getPoolName(), inputPool);
-    }
-    public Pool getPool(String key){
-        return poolManager.get(key);
-    }
-    public void removePool(String key){
-        poolManager.remove(key);
+        Logger.writeLog("Added pool: " + inputPool.getPoolName() + "\n");
     }
 
-
-    public String toString(){
-        return roomManager.toString() + poolManager.toString();
+    public Pool getPool(String key) {
+        if (poolManager.isEmpty() || !roomManager.containsKey(key))
+            return null;
+        else
+            return poolManager.get(key);
     }
 
+    public int removePool(String key) {
+        if (poolManager.isEmpty()) {
+            return -1;
+        } else {
+            poolManager.remove(key);
+            Logger.writeLog("Removed pool: " + key + "\n");
+            return 0;
+        }
+    }
+
+    // toString
+
+    @Override
+    public String toString() {
+        return "HouseManager{" +
+                "roomManager=" + roomManager +
+                ", poolManager=" + poolManager +
+                '}';
+    }
 }

@@ -8,7 +8,7 @@ public class Pool{
 
     //Constructor
 
-    public Pool(float width,float height){
+    public Pool(String poolName,float width,float height){
         waterTemperature = new TempSensor();
         chlorine = (float)(Math.random() * 5);
         pH = (float)(Math.random() * 6.5+2);

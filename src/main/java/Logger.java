@@ -12,6 +12,4 @@ public class Logger {
             e.printStackTrace();
         }
     }
-
-    // Logger.writeLog("gay");
 }
