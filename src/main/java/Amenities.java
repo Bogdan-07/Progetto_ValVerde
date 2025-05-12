@@ -25,11 +25,8 @@ public class Amenities {
         status = false;
     }
 
-    @Override
     public String toString() {
-        return "Amenities{" +
-                "deviceName='" + deviceName + '\'' +
-                ", status=" + status +
-                '}';
+        return "deviceName: " + deviceName + "\n" +
+                "status: " + status + "\n";
     }
 }

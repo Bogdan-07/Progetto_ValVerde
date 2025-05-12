@@ -1,9 +1,9 @@
 public class Sensor extends  Amenities{
 
 
-    public Sensor(){
-        super();
+    public Sensor(String deviceName){
+        super(deviceName);
+
     }
 
-    //abstract String toString();
 }

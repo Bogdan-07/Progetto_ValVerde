@@ -1,8 +1,8 @@
 import java.util.Hashtable;
 
 public class HouseManager {
-    private final Hashtable<String, Room> roomManager;
-    private final Hashtable<String, Pool> poolManager;
+     final Hashtable<String, Room> roomManager;
+     final Hashtable<String, Pool> poolManager;
 
     // Constructor
     public HouseManager() {
@@ -56,13 +56,20 @@ public class HouseManager {
         }
     }
 
+    //general Getters
+
+    public Hashtable<String, Room> getRoomManager() {
+        return roomManager;
+    }
+
+    public Hashtable<String, Pool> getPoolManager() {
+        return poolManager;
+    }
+
     // toString
 
-    @Override
     public String toString() {
-        return "HouseManager{" +
-                "roomManager=" + roomManager +
-                ", poolManager=" + poolManager +
-                '}';
+        return "roomManager: " + roomManager +
+                "poolManager: " + poolManager;
     }
 }

@@ -3,7 +3,8 @@ import java.util.*;
 public class HumiditySensor extends Sensor{
     private float humidity;
 
-    public HumiditySensor(){
+    public HumiditySensor(String deviceName){
+        super(deviceName);
         humidity = (float)(Math.random() * 100) + 1;
     }
 

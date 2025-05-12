@@ -4,12 +4,12 @@ public class Pool{
     private float height;
     private float chlorine;
     private float pH;
-    private TempSensor waterTemperature;
+    private TempSensor waterSensor;
 
     //Constructor
 
     public Pool(String poolName,float width,float height){
-        waterTemperature = new TempSensor();
+        waterSensor = new TempSensor("Temperature sensor");
         chlorine = (float)(Math.random() * 5);
         pH = (float)(Math.random() * 6.5+2);
         this.width = width;
@@ -60,14 +60,20 @@ public class Pool{
         return pH;
     }
 
+    public TempSensor getWaterTemperature(){
+        return waterSensor;
+    }
+
     //toString
 
-    public String stampa(){
-        if(pH < 7.1)
-            return "The potenzial hydrogen is too acidic";
-        else if(pH < 7.6)
-            return " The potenzial hydrogen is good";
-        else
-            return "The potenzial hydrogen is too alkaline";
+    public String toString() {
+        return "Pool{" +
+                "poolName='" + poolName + '\'' +
+                ", width=" + width +
+                ", height=" + height +
+                ", chlorine=" + chlorine +
+                ", pH=" + pH +
+                ", waterTemperature=" + waterSensor.getTemp() +
+                '}';
     }
 }

@@ -1,6 +1,6 @@
 public class Appliance extends Amenities {
-    private String type;          // es. "Lavatrice", "Frigorifero", "Forno"
-    private int wattage;          // consumo energetico in watt (come intero)
+    private String type;
+    private int wattage;
 
     // Costruttore
 
@@ -10,21 +10,20 @@ public class Appliance extends Amenities {
         this.wattage = wattage;
     }
 
-    // Getter e Setter
-    public String getTipo() {
+    // Getter & Setter
+    public String getType() {
         return type;
     }
 
-    public int getConsumo() {
+    public int getWattage() {
         return wattage;
     }
 
-    public void setConsumo(int wattage) {
+    public void setWattage(int wattage) {
         this.wattage = wattage;
     }
     public String toString() {
-        return super.toString() + 
-               "\nTipo: " + type +
-               "\nConsumo: " + wattage + "W";
+        return super.toString() + "Type: " + type +
+               "\nConsumo: " + wattage + "W\n";
     }
 }

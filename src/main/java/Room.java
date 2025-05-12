@@ -2,14 +2,12 @@ import java.util.Hashtable;
 
 public class Room {
     private String roomName;
-    private Hashtable<String, Sensor> sensors;
-    private Hashtable<String, Amenities> houseFeatures;
+    private Hashtable<String, Amenities> roomFeatures;  // Single Hashtable for all amenities
 
     // Constructor
     public Room(String roomName) {
         this.roomName = roomName;
-        sensors = new Hashtable<>();
-        houseFeatures = new Hashtable<>();
+        roomFeatures = new Hashtable<>();
     }
 
     // Set & Get
@@ -21,33 +19,40 @@ public class Room {
         return roomName;
     }
 
-    // Sensors methods
-    public void addSensor(String sensorName, Sensor sensor) {
-        sensors.put(sensorName, sensor);
-        Logger.writeLog("Added sensor '" + sensorName + "' to room: " + this.roomName + "\n");
-    }
+    //Amenities
 
-    public Sensor getSensor(String key) {
-        return sensors.get(key);
+    public void addAmenity(String name, Amenities device) {
+        roomFeatures.put(name, device);
+        Logger.writeLog("Added amenity '" + name + "' to room: " + this.roomName + "\n");
     }
-
-    public void removeSensor(String key) {
-        sensors.remove(key);
-        Logger.writeLog("Removed sensor '" + key + "' from room: " + this.roomName + "\n");
+    public Amenities getAmenity(String key) {
+        return roomFeatures.get(key);
     }
-
-    // Amenities methods
-    public void addHouseFeature(Amenities device) {
-        houseFeatures.put(device.getDeviceName(), device);
-        Logger.writeLog("Added amenity '" + device.getDeviceName() + "' to room: " + this.roomName + "\n");
-    }
-
-    public Amenities getHouseFeature(String key) {
-        return houseFeatures.get(key);
-    }
-
-    public void removeHouseFeature(String key) {
-        houseFeatures.remove(key);
+    public void removeRoomFeature(String key) {
+        roomFeatures.remove(key);
         Logger.writeLog("Removed amenity '" + key + "' from room: " + this.roomName + "\n");
+    }
+
+    //Sensors
+
+    public void addSensor(String sensorName, Sensor sensor) {
+        addAmenity(sensorName, sensor);
+    }
+    public Sensor getSensor(String key) {
+        Amenities item = getAmenity(key);
+        return (item instanceof Sensor) ? (Sensor) item : null;
+    }
+
+
+
+    public Hashtable<String, Amenities> getRoomFeatures() {
+        return roomFeatures;
+    }
+
+    public String toString() {
+        return "Room{" +
+                "roomName='" + roomName + '\'' +
+                ", roomFeatures=" + roomFeatures +
+                '}';
     }
 }
