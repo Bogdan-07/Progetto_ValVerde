@@ -15,8 +15,7 @@ public class Main {
             System.out.println("    3. Manage Room Amenities");
             System.out.println("    4. View All Rooms and Pools");
             System.out.println("    5. Save Information");
-            System.out.println("    6. Load Information");
-            System.out.println("    7. Exit");
+            System.out.println("    6. Exit");
             System.out.print("Enter your choice: ");
 
             int mainChoice = userInput.nextInt();
@@ -241,11 +240,7 @@ public class Main {
                 case 5:                                                                            // Save in Json File
                     useJson.roomToJson(orazioHouse.getRoomManager());
                     break;
-                case 6:                                                                          // Load form Json File
-                    //Room temp = useJson.jsonToRoom();
-                    System.out.println("Funzione WIP");
-                    break;
-                case 7:                                                                                         // Exit
+                case 6:                                                                                         // Exit
                     Logger.writeLog("User exited the program\n");
                     x = false;
                     System.out.println("Exiting...");
